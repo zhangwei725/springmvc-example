@@ -1,0 +1,68 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app id="WebApp_ID" version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <display-name>Spring MVC Application</display-name>
+    <display-name>VIP影城</display-name>
+    <servlet>
+        <servlet-name>dispatcher-servlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:spring-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher-servlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+
+    <!--  提供跨域支持 -->
+    <filter>
+        <filter-name>CORS</filter-name>
+        <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+        <init-param>
+            <param-name>cors.allowOrigin</param-name>
+            <param-value>*</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.supportedMethods</param-name>
+            <param-value>GET, POST, HEAD, PUT, DELETE</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.supportedHeaders</param-name>
+            <param-value>Accept, Origin, X-Requested-With, Content-Type,Last-Modified</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.exposedHeaders</param-name>
+            <param-value>Set-Cookie</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.supportsCredentials</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CORS</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+<!--
+cors.allowOrigin指的可以通过的ip，代表所有，可以使用指定的ip，多个的话可以用逗号分隔，默认为
+cors.supportedMethods指的是请求方式 默认为*
+cors.supportedHeaders请求支持的头信息，默认为*
+cors.exposedHeaders暴露的头信息，默认的empy list
+cors.supportsCredentials支持证书，默认为true
+cors.maxAge 最大过期时间，默认为-1
+cors.tagRequests 默认为false
+cors.allowSubdomains允许子域 默认为false-->
+</web-app>
