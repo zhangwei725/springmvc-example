@@ -1,8 +1,11 @@
 package com.vip.mvc.entity;
 
+import lombok.Data;
+
 /**
  * @author zhangwei
  */
+@Data
 public class Address {
     private Integer addressId;
     private String city;

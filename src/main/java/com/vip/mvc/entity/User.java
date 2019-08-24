@@ -1,38 +1,21 @@
 package com.vip.mvc.entity;
 
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhangwei
  */
+@Data
 public class User implements Serializable {
     private Integer uid;
     private String name;
     private Address address;
+    private List<Address> addressList;
+    private Map<String,Address> map;
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
